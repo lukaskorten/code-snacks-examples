@@ -1,0 +1,18 @@
+version: '3.4'
+services:
+  codesnacks_db:
+    image: mariadb:10.2
+    environment:
+      MYSQL_ROOT_PASSWORD: geheim
+      MYSQL_DATABASE: codesnacks
+      MYSQL_USER: codesnacks
+      MYSQL_PASSWORD: geheim
+    restart: always
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    volumes:
+      - codesnacks_db:/var/lib/mysql
+volumes:
+  codesnacks_db: {}
