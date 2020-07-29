@@ -1,0 +1,44 @@
+{
+	"users": {
+		"operationId": "USERS_BY_NAME",
+		"useCases": {
+			"200": {
+				"request": {
+					"path": "/john-doe",
+					"headers": {
+						"Accept": "application/json"
+					}
+				},
+				"response": {
+					"status": 200,
+					"headers": {
+						"Content-Type": "application/json"
+					},
+					"body": {
+						"id": 42,
+						"username": "john-doe",
+						"firstName": "John",
+						"lastName": "Doe"
+					}
+				}
+			},
+			"403": {
+				"request": {
+					"path": "/foo",
+					"headers": {
+						"Accept": "application/json"
+					}
+				},
+				"response": {
+					"status": 403,
+					"headers": {
+						"Content-Type": "application/json"
+					},
+					"body": {
+						"error": "not found"
+					}
+				}
+			}
+		}
+	}
+}

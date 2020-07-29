@@ -1,0 +1,51 @@
+openapi: 3.0.2
+info:
+  title: Codesnacks
+  description: Lorem ipsum ...
+  version: 0.0.1
+tags:
+  - name: user
+    description: Operations about user
+paths:
+  /users/{username}:
+    get:
+      tags:
+        - user
+      summary: Get user by user name
+      operationId: getUserByName
+      parameters:
+        - name: username
+          in: path
+          description: 'The name that needs to be fetched. '
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              example:
+                id: 10
+                username: john-doe
+                firstName: John
+                lastName: Doe
+        404:
+          description: User not found
+          content: {}
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        username:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
