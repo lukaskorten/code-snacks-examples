@@ -1,6 +1,6 @@
 package de.codesnacks.openapi;
 
-import de.codesnacks.openapi.client.ProviderProperties;
+import de.codesnacks.openapi.client.ApiProvider;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -17,7 +17,7 @@ public class OpenApiApplication {
 	}
 
 	@Bean
-	public RestTemplate restTemplate(RestTemplateBuilder builder, ProviderProperties providerProperties) {
+	public RestTemplate restTemplate(RestTemplateBuilder builder, ApiProvider providerProperties) {
 		return builder.rootUri(providerProperties.getRootUrl()).build();
 	}
 

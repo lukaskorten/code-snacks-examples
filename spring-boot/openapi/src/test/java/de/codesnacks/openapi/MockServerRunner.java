@@ -3,7 +3,7 @@ package de.codesnacks.openapi;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.client.WireMock;
 import com.github.tomakehurst.wiremock.core.WireMockConfiguration;
-import de.codesnacks.openapi.client.ProviderProperties;
+import de.codesnacks.openapi.client.ApiProvider;
 import org.junit.jupiter.api.extension.AfterAllCallback;
 import org.junit.jupiter.api.extension.BeforeAllCallback;
 import org.junit.jupiter.api.extension.BeforeEachCallback;
@@ -24,13 +24,13 @@ public class MockServerRunner implements BeforeAllCallback, AfterAllCallback, Be
 	}
 
 	private WireMockConfiguration wireMockConfiguration(ExtensionContext extensionContext) {
-		ProviderProperties providerProperties = getProviderProperties(extensionContext);
+		ApiProvider providerProperties = getProviderProperties(extensionContext);
 		return WireMockConfiguration.wireMockConfig().port(providerProperties.getPort());
 	}
 
-	private ProviderProperties getProviderProperties(ExtensionContext extensionContext) {
+	private ApiProvider getProviderProperties(ExtensionContext extensionContext) {
 		ApplicationContext ac = SpringExtension.getApplicationContext(extensionContext);
-		return ac.getBean(ProviderProperties.class);
+		return ac.getBean(ApiProvider.class);
 	}
 
 	@Override

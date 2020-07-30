@@ -15,9 +15,8 @@ import java.io.IOException;
 public class ContractProvider {
 
 	@Value("classpath:contract/users.json")
-	Resource resource;
-
-	final ObjectMapper objectMapper;
+	private Resource resource;
+	private final ObjectMapper objectMapper;
 
 	public Contract getContract() {
 		try {

@@ -10,12 +10,16 @@ import org.springframework.context.annotation.Configuration;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Configuration
 @ConfigurationProperties(prefix = "provider")
-public class ProviderProperties {
+public class ApiProvider {
 
 	String url;
 	int port;
 
 	public String getRootUrl() {
 		return url + ":" + port;
+	}
+
+	public String toUrl(String path) {
+		return getRootUrl() + path;
 	}
 }
