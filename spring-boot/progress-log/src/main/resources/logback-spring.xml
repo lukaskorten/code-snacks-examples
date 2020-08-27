@@ -9,7 +9,7 @@
 			<onMatch>DENY</onMatch>
 		</filter>
 		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-			<pattern>%d %green([%thread]) %highlight(%level) - %msg%n</pattern>
+			<pattern>%d %highlight(%level) - %msg%n</pattern>
 		</encoder>
 	</appender>
 	<appender name="colorAppender" class="ch.qos.logback.core.ConsoleAppender">
@@ -21,7 +21,7 @@
 			<onMatch>ACCEPT</onMatch>
 		</filter>
 		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-			<pattern>%d %green([%thread]) %highlight(%level) - %(%marker) : %msg\r</pattern>
+			<pattern>%20r ms %highlight(%level) - %marker: %green(%msg)\r</pattern>
 		</encoder>
 	</appender>
 	<root level="info">

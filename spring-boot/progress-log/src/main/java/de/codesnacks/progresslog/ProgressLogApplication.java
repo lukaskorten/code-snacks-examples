@@ -18,10 +18,10 @@ public class ProgressLogApplication {
 		LOG.info("start process ...");
 		Marker progress = MarkerFactory.getMarker("PROGRESS");
 		for (int i = 0; i <= 100; i++) {
-			LOG.info(progress, "items processed - {} / {}", i, 100);
+			LOG.info(progress, "{} / {} items processed ...", i, 100);
 			Thread.sleep(100);
 		}
-		LOG.info("finish process ...");
+		LOG.info("process finished: {} items processed", 100);
 	}
 
 }
