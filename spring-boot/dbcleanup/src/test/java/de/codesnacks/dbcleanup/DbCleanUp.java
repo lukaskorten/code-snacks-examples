@@ -8,12 +8,12 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 public class DbCleanUp implements BeforeAllCallback, BeforeEachCallback {
 
-	DbCleanUpService cleanUpService;
+	private DbCleanUpService cleanUpService;
 
 	@Override
 	public void beforeAll(ExtensionContext context) {
-		ApplicationContext applicationContext = SpringExtension.getApplicationContext(context);
-		cleanUpService = applicationContext.getBean(DbCleanUpService.class);
+		ApplicationContext ac = SpringExtension.getApplicationContext(context);
+		cleanUpService = ac.getBean(DbCleanUpService.class);
 	}
 
 	@Override

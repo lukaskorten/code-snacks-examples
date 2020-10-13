@@ -12,7 +12,7 @@
 			<pattern>%d %highlight(%level) - %msg%n</pattern>
 		</encoder>
 	</appender>
-	<appender name="colorAppender" class="ch.qos.logback.core.ConsoleAppender">
+	<appender name="progressAppender" class="ch.qos.logback.core.ConsoleAppender">
 		<filter class="ch.qos.logback.core.filter.EvaluatorFilter">
 			<evaluator class="ch.qos.logback.classic.boolex.OnMarkerEvaluator">
 				<marker>PROGRESS</marker>
@@ -21,11 +21,13 @@
 			<onMatch>ACCEPT</onMatch>
 		</filter>
 		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-			<pattern>%20r ms %highlight(%level) - %marker: %green(%msg)\r</pattern>
+			<pattern>
+				%20r ms %highlight(%level) - %marker: %green(%msg)\r
+			</pattern>
 		</encoder>
 	</appender>
 	<root level="info">
 		<appender-ref ref="CONSOLE"/>
-		<appender-ref ref="colorAppender"/>
+		<appender-ref ref="progressAppender"/>
 	</root>
 </configuration>
