@@ -1,17 +1,19 @@
 <script>
 	import 'codemirror/lib/codemirror.css';
+	import 'codemirror/mode/markdown/markdown';
 	import { onMount } from 'svelte';
 	import CodeMirror from 'codemirror';
+	
 
 	let refs = {};
-	let code = '## Dies ist ein Test';
+	let code;
 
 	onMount(()=> {
 		const editor = CodeMirror.fromTextArea(refs.editor, {
-			mode: 'Gfm'
+			lineWrapping: true,
+			mode: 'markdown',
 		});
-		editor.setValue(code || '');
-		editor.refresh();
+		editor.setValue('# Hey John')
 		return () => {
 			editor.toTextArea();
 		}
@@ -20,13 +22,13 @@
 </script>
 
 <main>
-	<h1>Markdown Editor</h1>
 	<div class="editor-container">
 		<textarea bind:this={refs.editor} value={code} readonly></textarea>
 	</div>
 </main>
 
 <style>
+
 	main {
 		padding: 1em;
 		max-width: 240px;
@@ -58,4 +60,28 @@
 			max-width: none;
 		}
 	}
+
+.editor-container :global(.cm-header) {
+	font-family: arial; 
+}
+.editor-container :global(.cm-header-1) { 
+	font-size: 150%; 
+}
+.editor-container :global(.cm-header-2) { 
+	font-size: 130%; 
+}
+.editor-container :global(.cm-header-3) { 
+	font-size: 120%; 
+}
+.editor-container :global(.cm-header-4) { 
+	font-size: 110%; }
+.editor-container :global(.cm-header-5) { 
+	font-size: 100%; 
+}
+.editor-container :global(.cm-header-6) { 
+	font-size: 90%; 
+}
+.editor-container :global(.cm-strong ) { 
+	font-size: 140%; 
+}
 </style>
